@@ -35,3 +35,21 @@ services:
         volumes:
             - /home/${HOMENAME}/${ROOTNAMEPROJECT}/deployment/db/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
             - /home/${HOMENAME}/${ROOTNAMEPROJECT}/deployment/postgres-data:/var/lib/postgresql/data
+    elasticsearchdata:
+        build:
+            context: /home/${HOMENAME}/${ROOTNAMEPROJECT}/deployment/docker/dev/ElasticsearchBd
+            dockerfile: Dockerfile
+        volumes:
+            - elasticsearchData:/usr/share/elasticsearch/data:z
+            - /home/${HOMENAME}/${ROOTNAMEPROJECT}/deployment/docker/dev/ElasticsearchBd/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
+        environment:
+            discovery.type: single-node
+        ports:
+             - "9200:9200"
+        networks:
+            - elastics
+networks:
+    elastics:
+
+volumes:
+    elasticsearchData:
