@@ -82,6 +82,15 @@
     "egulias/email-validator": {
         "version": "3.1.2"
     },
+    "elasticsearch/elasticsearch": {
+        "version": "v7.16.0"
+    },
+    "ezimuel/guzzlestreams": {
+        "version": "3.0.1"
+    },
+    "ezimuel/ringphp": {
+        "version": "1.2.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
@@ -161,6 +170,9 @@
     },
     "psr/log": {
         "version": "2.0.0"
+    },
+    "react/promise": {
+        "version": "v2.8.0"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
