@@ -6,6 +6,7 @@ use App\Service\CreateClientElasticSearch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Faker\Factory;
 
 class ElasticsearchSetController extends AbstractController
 {
@@ -14,9 +15,21 @@ class ElasticsearchSetController extends AbstractController
      */
     private $clientElasticSearch;
 
-    public function __construct(CreateClientElasticSearch $clientElasticSearch)
-    {
+    /**
+     * @var Factory
+     */
+    private $faker;
+
+    /**
+     * @param Factory $faker
+     * @param CreateClientElasticSearch $clientElasticSearch
+     */
+    public function __construct(
+        $faker,
+        CreateClientElasticSearch $clientElasticSearch
+    ) {
         $this->clientElasticSearch = $clientElasticSearch;
+        $this->faker = $faker::create();
     }
 
     /**
@@ -30,11 +43,20 @@ class ElasticsearchSetController extends AbstractController
             'body'  => [
                         'testField' => [
                             'type'=>'abc',
-                            'id' => mt_rand(1, 1000),
-                            'cardId' => mt_rand(1, 1000),
-                            'userId' => mt_rand(1, 1000),
-                            'roleId' => mt_rand(1, 1000),
-                            'name' => mt_rand(1, 1000),
+                            'id' => mt_rand(1, 100000),
+                            'cardId' => mt_rand(1, 100000),
+                            'ban' => $this->faker->boolean,
+                            'userId' => mt_rand(1, 100000),
+                            'roleId' => mt_rand(1, 10),
+                            'name' => $this->faker->name,
+                            'address' => $this->faker->address,
+                            'city' => $this->faker->city,
+                            'companyEmail' => $this->faker->companyEmail,
+                            'company' => $this->faker->company,
+                            'creditCardNumber' => $this->faker->creditCardNumber,
+                            'dateTimeThisMonth' => $this->faker->dateTimeThisMonth,
+                            'dateTimeRegistrationCard' => $this->faker->dateTime,
+                            'creditCardType' => $this->faker->creditCardType,
                             ]
                         ]
         ];
