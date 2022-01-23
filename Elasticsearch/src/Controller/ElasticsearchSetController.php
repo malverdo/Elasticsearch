@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Service\CreateClientElasticSearch;
+use Faker\Factory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Faker\Factory;
 
 class ElasticsearchSetController extends AbstractController
 {
@@ -25,7 +25,7 @@ class ElasticsearchSetController extends AbstractController
      * @param CreateClientElasticSearch $clientElasticSearch
      */
     public function __construct(
-        $faker,
+        Factory $faker,
         CreateClientElasticSearch $clientElasticSearch
     ) {
         $this->clientElasticSearch = $clientElasticSearch;
