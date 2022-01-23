@@ -35,7 +35,7 @@ class ElasticsearchGetController extends AbstractController
             'body'  => [
                 'query' => [
                     'match' => [
-                        'testField.type' =>  'abc'
+                        'testField.creditCardType' =>  'MasterCard'
                     ]
                 ],
                 'sort' => [
