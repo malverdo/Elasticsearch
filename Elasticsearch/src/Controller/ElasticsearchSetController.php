@@ -27,8 +27,16 @@ class ElasticsearchSetController extends AbstractController
         $client = $this->clientElasticSearch->getClient();
         $params = [
             'index' => 'my_index',
-            'id'    => 'my_id',
-            'body'  => ['testField' => 'abc']
+            'body'  => [
+                        'testField' => [
+                            'type'=>'abc',
+                            'id' => mt_rand(1, 1000),
+                            'cardId' => mt_rand(1, 1000),
+                            'userId' => mt_rand(1, 1000),
+                            'roleId' => mt_rand(1, 1000),
+                            'name' => mt_rand(1, 1000),
+                            ]
+                        ]
         ];
 
         $response = $client->index($params);
