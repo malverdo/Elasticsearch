@@ -31,7 +31,10 @@ class SearchElasticMatchController extends AbstractController
             'body'  => [
                 'query' => [
                     'match' => [
-                        'testField.creditCardType' =>  'MasterCard'
+                        'testField.creditCardType' =>  [
+                            'query' => 'MasterCard',
+                            "fuzziness" => "AUTO"
+                        ]
                     ]
                 ],
                 'sort' => [
