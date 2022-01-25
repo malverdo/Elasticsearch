@@ -42,7 +42,7 @@ class SearchElasticAggsController extends AbstractController
                  ],
                 "aggs" => [
                     "terms_roleId" => [
-                        "terms" => [
+                        "max" => [
                             "field" => "testField.roleId"
                         ]
                     ]
