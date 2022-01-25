@@ -41,17 +41,10 @@ class SearchElasticAggsController extends AbstractController
                     ]
                  ],
                 "aggs" => [
-                    "my-agg-name" => [
+                    "terms_roleId" => [
                         "terms" => [
-                            "field" => "ban"
+                            "field" => "testField.roleId"
                         ]
-                    ]
-                ],
-
-                'sort' => [
-                    'testField.id' => [
-                        'order' => 'desc'
-
                     ]
                 ]
             ]
