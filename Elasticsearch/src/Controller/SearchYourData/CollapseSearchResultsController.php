@@ -25,7 +25,33 @@ class CollapseSearchResultsController extends AbstractController
      */
     public function index(): Response
     {
-
+        $params = [
+            'index' => 'my_index',
+            'size' => 99,
+            'body'  => [
+                'query' => [
+                    'bool' => [
+                        'must' => [
+                            [
+                                'match' => [
+                                    'testField.creditCardType' =>  'MasterCard'
+                                ]
+                            ]
+                        ],
+                        "filter"=>[
+                            "range" => [
+                                "testField.dateTimeRegistrationCard.date" => [
+                                    "gte" => "1996-07-11",
+                                    "lte" => "2000-08-11"
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $response = $this->clientElasticSearch->search($params);
+        dd($response);
 
         return $this->render('collapse_search_results/index.html.twig', [
             'controller_name' => 'CollapseSearchResultsController',
