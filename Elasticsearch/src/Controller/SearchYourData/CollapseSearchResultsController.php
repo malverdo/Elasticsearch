@@ -35,13 +35,34 @@ class CollapseSearchResultsController extends AbstractController
                     ]
                 ],
                 'collapse' => [
-                    'field' =>  'testField.roleId'
+                    'field' =>  'testField.roleId',
+                    'inner_hits' => [
+                        [
+                            'name' => 'descId',
+                            'size' => 3,
+                            "sort" => [
+                                'testField.id' => [
+                                    "order" => "desc"
+                                ]
+                            ]
+                        ],
+                        [
+                            'name' => 'ascId',
+                            'size' => 3,
+                            "sort" => [
+                                'testField.id' => [
+                                    "order" => "asc"
+                                ]
+                            ]
+                        ]
+                    ],
+
                 ],
-//                'sort' => [
-//                   'testField.roleId' => [
-//                       "order" => "desc"
-//                   ]
-//                ]
+                'sort' => [
+                   'testField.roleId' => [
+                       "order" => "desc"
+                   ]
+                ]
             ]
         ];
         $response = $this->clientElasticSearch->search($params);
