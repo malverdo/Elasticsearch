@@ -30,24 +30,18 @@ class CollapseSearchResultsController extends AbstractController
             'size' => 99,
             'body'  => [
                 'query' => [
-                    'bool' => [
-                        'must' => [
-                            [
-                                'match' => [
-                                    'testField.creditCardType' =>  'MasterCard'
-                                ]
-                            ]
-                        ],
-                        "filter"=>[
-                            "range" => [
-                                "testField.dateTimeRegistrationCard.date" => [
-                                    "gte" => "1996-07-11",
-                                    "lte" => "2000-08-11"
-                                ]
-                            ]
-                        ]
+                    'match' => [
+                        'testField.creditCardType' =>  'MasterCard'
                     ]
-                ]
+                ],
+                'collapse' => [
+                    'field' =>  'testField.roleId'
+                ],
+//                'sort' => [
+//                   'testField.roleId' => [
+//                       "order" => "desc"
+//                   ]
+//                ]
             ]
         ];
         $response = $this->clientElasticSearch->search($params);
