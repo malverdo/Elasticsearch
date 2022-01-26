@@ -2,6 +2,7 @@
 
 namespace App\Controller\SearchYourData;
 
+use App\Service\CreateClientElasticSearch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,7 +10,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class CollapseSearchResultsController extends AbstractController
 {
 
+    /**
+     * @var CreateClientElasticSearch
+     */
+    private $clientElasticSearch;
 
+    public function __construct(CreateClientElasticSearch $clientElasticSearch)
+    {
+        $this->clientElasticSearch = $clientElasticSearch->getClient();
+    }
 
     /**
      * @Route("/collapse/search/results", name="collapse_search_results")
