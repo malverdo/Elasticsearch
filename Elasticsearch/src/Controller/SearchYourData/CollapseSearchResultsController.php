@@ -35,12 +35,12 @@ class CollapseSearchResultsController extends AbstractController
                     ]
                 ],
                 'collapse' => [
-                    'field' =>  'testField.roleId',
+                    'field' =>  'testField.cardId',
                     'inner_hits' => [
                         [
                             'name' => 'descId',
                             'collapse' => ['field' => 'testField.userId'],
-                            'size' => 3,
+                            'size' => 20,
                             "sort" => [
                                 'testField.id' => [
                                     "order" => "desc"
@@ -49,7 +49,7 @@ class CollapseSearchResultsController extends AbstractController
                         ],
                         [
                             'name' => 'ascId',
-                            'size' => 3,
+                            'size' => 20,
                             "sort" => [
                                 'testField.id' => [
                                     "order" => "asc"
