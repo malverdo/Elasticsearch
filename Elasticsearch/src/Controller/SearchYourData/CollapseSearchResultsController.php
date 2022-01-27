@@ -39,6 +39,7 @@ class CollapseSearchResultsController extends AbstractController
                     'inner_hits' => [
                         [
                             'name' => 'descId',
+                            '' => ['field' => 'testField.userId'],
                             'size' => 3,
                             "sort" => [
                                 'testField.id' => [
