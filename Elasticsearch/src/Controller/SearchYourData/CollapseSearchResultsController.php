@@ -27,7 +27,7 @@ class CollapseSearchResultsController extends AbstractController
     {
         $params = [
             'index' => 'my_index',
-            'size' => 99,
+            'size' => 20,
             'body'  => [
                 'query' => [
                     'match' => [
@@ -39,7 +39,7 @@ class CollapseSearchResultsController extends AbstractController
                     'inner_hits' => [
                         [
                             'name' => 'descId',
-                            'collapse' => ['field' => 'testField.userId'],
+                            'collapse' => ['field' => 'testField.roleId'],
                             'size' => 20,
                             "sort" => [
                                 'testField.id' => [
