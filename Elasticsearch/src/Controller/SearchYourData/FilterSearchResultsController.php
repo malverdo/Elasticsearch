@@ -28,19 +28,21 @@ class FilterSearchResultsController extends AbstractController
         $params = [
             'index' => 'card_index',
             'track_total_hits' => true,
-            'size' => 0,
+            'size' => 1,
             'body'  => [
                 'query' => [
-                    'match' => [
-                        '_doc.creditCardType' =>  'MasterCard'
+                    'bool' => [
+                        'filter' => [
+                            ['term' => ['_doc.company' => 'Lindgren Inc']],
+                            ['term' => ['_doc.ban' => true]],
+                        ]
                     ]
                 ],
-
-                'sort' => [
-                    '_doc.roleId' => [
-                        "order" => "desc"
+                'aggs' => [
+                    'models' => [
+                        'terms' => ['field' => '_doc.creditCardType']
                     ]
-                ],
+                ]
             ]
         ];
         $response = $this->clientElasticSearch->search($params);
