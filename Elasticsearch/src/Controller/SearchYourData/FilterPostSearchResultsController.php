@@ -30,20 +30,32 @@ class FilterPostSearchResultsController extends AbstractController
         $params = [
             'index' => 'card_index',
             'track_total_hits' => true,
-            'size' => 1,
+            'size' => 11,
             'body'  => [
                 'query' => [
                     'bool' => [
                         'filter' => [
-                            ['term' => ['_doc.company' => 'Lindgren Inc']],
                             ['term' => ['_doc.ban' => true]],
                         ]
                     ]
                 ],
                 'aggs' => [
-                    'models' => [
+                    'creditCardType' => [
                         'terms' => ['field' => '_doc.creditCardType']
+                    ],
+                    'visa' => [
+                        'filter' => [
+                            'term' => ['_doc.creditCardType' => 'Visa'],
+                        ],
+                        'aggs' => [
+                            'roleId' => [
+                                'terms' => ['field' => '_doc.roleId']
+                            ]
+                        ]
                     ]
+                ],
+                'post_filter' => [
+                    'term' => ['_doc.creditCardType' => 'Visa']
                 ]
             ]
         ];
