@@ -25,6 +25,27 @@ class FilterSearchResultsController extends AbstractController
      */
     public function index(): Response
     {
+        $params = [
+            'index' => 'my_index',
+            'size' => 20,
+            'body'  => [
+                'query' => [
+                    'match' => [
+                        'testField.creditCardType' =>  'MasterCard'
+                    ]
+                ],
+
+                'sort' => [
+                    'testField.roleId' => [
+                        "order" => "desc"
+                    ]
+                ]
+            ]
+        ];
+        $response = $this->clientElasticSearch->search($params);
+        dd($response);
+
+
         return $this->render('filter_search_results/index.html.twig', [
             'controller_name' => 'FilterSearchResultsController',
         ]);
