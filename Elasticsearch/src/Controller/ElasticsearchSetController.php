@@ -38,11 +38,15 @@ class ElasticsearchSetController extends AbstractController
     public function index(): Response
     {
         $client = $this->clientElasticSearch->getClient();
+
+        for ($i = 1; $i <= 12134; $i++) {
+
+
         $params = [
-            'index' => 'my_index',
+            'index' => 'card_index',
             'body'  => [
-                        'testField' => [
-                            'type'=>'abc',
+                        '_doc' => [
+                            'type'=>'wally',
                             'id' => mt_rand(1, 100000),
                             'cardId' => mt_rand(1, 100000),
                             'ban' => $this->faker->boolean,
@@ -54,7 +58,7 @@ class ElasticsearchSetController extends AbstractController
                             'companyEmail' => $this->faker->companyEmail,
                             'company' => $this->faker->company,
                             'creditCardNumber' => $this->faker->creditCardNumber,
-                            'dateTimeThisMonth' => $this->faker->dateTimeThisMonth,
+                            'dateTimeThisMonth' => ['date' => mt_rand(1243345370, 1643345370)],
                             'dateTimeRegistrationCard' => $this->faker->dateTime,
                             'creditCardType' => $this->faker->creditCardType,
                             ]
@@ -62,6 +66,7 @@ class ElasticsearchSetController extends AbstractController
         ];
 
         $response = $client->index($params);
+        }
         return $this->render('elasticsearch_set/index.html.twig', [
             'controller_name' => 'ElasticsearchSetController',
         ]);

@@ -26,20 +26,21 @@ class FilterSearchResultsController extends AbstractController
     public function index(): Response
     {
         $params = [
-            'index' => 'my_index',
-            'size' => 20,
+            'index' => 'card_index',
+            'track_total_hits' => true,
+            'size' => 0,
             'body'  => [
                 'query' => [
                     'match' => [
-                        'testField.creditCardType' =>  'MasterCard'
+                        '_doc.creditCardType' =>  'MasterCard'
                     ]
                 ],
 
                 'sort' => [
-                    'testField.roleId' => [
+                    '_doc.roleId' => [
                         "order" => "desc"
                     ]
-                ]
+                ],
             ]
         ];
         $response = $this->clientElasticSearch->search($params);
