@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\CreateIndex;
 
 use App\Service\CreateClientElasticSearch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
