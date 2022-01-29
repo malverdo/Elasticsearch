@@ -63,16 +63,31 @@ class ElasticSearchCreateIndexTypeController extends AbstractController
                                     ]
                                 ]],
                                 'creditCardType' => ['type' => 'keyword'],
+                                'data' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                            'lastNameUser' => [
+                                                'type' => 'text'
+                                            ],
+                                            'firstNameUser' => [
+                                                'type' => 'text'
+                                            ],
+                                            'aboutMe' => [
+                                                'type' => 'text'
+                                            ]
+                                        ]
+                                    ]
+                                ]
                             ]
                         ]
-                    ]
-
-                ],
+                    ],
                 'settings' => [
                     'number_of_shards' => 2,
                     'number_of_replicas' => 0
                 ]
-            ]
+
+                ]
+
         ];
 
 

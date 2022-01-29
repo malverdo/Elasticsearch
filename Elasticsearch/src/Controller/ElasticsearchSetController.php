@@ -39,7 +39,7 @@ class ElasticsearchSetController extends AbstractController
     {
         $client = $this->clientElasticSearch->getClient();
 
-        for ($i = 1; $i <= 12134; $i++) {
+        for ($i = 1; $i <= 12234; $i++) {
 
 
         $params = [
@@ -61,6 +61,11 @@ class ElasticsearchSetController extends AbstractController
                             'dateTimeThisMonth' => ['date' => mt_rand(1243345370, 1643345370)],
                             'dateTimeRegistrationCard' => $this->faker->dateTime,
                             'creditCardType' => $this->faker->creditCardType,
+                            'data' => [
+                                'lastNameUser' => $this->faker->lastName,
+                                'firstNameUser' => $this->faker->firstName,
+                                'aboutMe' => $this->faker->text
+                            ],
                             ]
                         ]
         ];
