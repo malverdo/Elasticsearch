@@ -24,6 +24,6 @@ services:
         autowire: true
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Controller\ElasticsearchSetController:
+    App\Controller\CreateIndex\ElasticsearchSetController:
         $faker: '@Faker\Factory'
         $clientElasticSearch: '@App\Service\CreateClientElasticSearch'
