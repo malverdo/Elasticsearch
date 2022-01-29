@@ -58,7 +58,7 @@ class PaginateSearchController extends AbstractController
         $total =  round($response['hits']['total']['value'] / 10) - 1;
 
         $this->pagination->pagination($numberPage, $total);
-//        dd($response);
+        dd($response);
 
         return $this->render('paginate_search/index.html.twig', [
             'controller_name' => 'PaginateSearchController',
