@@ -14,6 +14,7 @@
     {% if pagination.start > 1 %}
       <a href="{{ path("paginate_search") }}/{{ pagination.startTotal  }}">{{ pagination.startTotal }}</a>...
     {% endif %}
+
     <a href="{{ path("paginate_search") }}/{{ pagination.start  }}">{{ pagination.start }}</a>
     <a href="{{ path("paginate_search") }}/{{ pagination.middle }}">{{ pagination.middle }}</a>
     <a href="{{ path("paginate_search") }}/{{ pagination.end }}">{{ pagination.end }}</a>
