@@ -25,6 +25,27 @@ class PaginateSearchController extends AbstractController
      */
     public function index(): Response
     {
+
+        $params = [
+            'index' => 'card_index',
+            'track_total_hits' => true,
+            'size' => 10,
+            'body'  => [
+                'query' => [
+                    'match' => [
+                        "_doc.ban" => true
+                    ]
+                ],
+                'sort' => [
+                    '_doc.id' => [
+                        'order' => 'asc'
+                    ]
+                ]
+            ]
+        ];
+        $response = $this->clientElasticSearch->search($params);
+        dd($response);
+
         return $this->render('paginate_search/index.html.twig', [
             'controller_name' => 'PaginateSearchController',
         ]);
