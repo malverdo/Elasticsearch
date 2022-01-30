@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\CreateIndex;
+namespace App\Controller\SetData;
 
 use App\Service\CreateClientElasticSearch;
 use Faker\Factory;

@@ -34,12 +34,11 @@ class ElasticSearchCreateIndexNestedController extends AbstractController
 
         $client = $this->clientElasticSearch->getClient();
         $params = [
-            'index' => 'card_index',
-            'id' => 'pqFMMQraTVy6Ft3dnVz06Q',
+            'index' => 'index_nested',
             'body'  => [
                 'mappings' => [
                     'properties' => [
-                        '_docNested' => [
+                        '_doc' => [
                             'properties' => [
                                 'comments '=>[ 'type' => 'nested'],
                             ]
@@ -56,7 +55,7 @@ class ElasticSearchCreateIndexNestedController extends AbstractController
         ];
 
 
-        $response = $client->create($params);
+        $response = $client->indices()->create($params);
 
         return $this->render('elastic_search_create_index_nested/index.html.twig', [
             'controller_name' => 'ElasticSearchCreateIndexNestedController',
