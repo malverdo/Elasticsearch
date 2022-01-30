@@ -29,7 +29,7 @@ class InnerHitsSearchController extends AbstractController
         $params = [
             'index' => 'index_nested',
             'track_total_hits' => true,
-            'size' => 1,
+            'size' => 10,
             'body'  => [
                 'query' => [
                     'nested' => [
@@ -39,7 +39,12 @@ class InnerHitsSearchController extends AbstractController
                                 "_docNested.author" => 'Hoeger'
                             ]
                         ],
-                        'inner_hits' => []
+                        'inner_hits' => [
+                            "_source" => false,
+                                "docvalue_fields" => [
+                                "_docNested.votes.voter.keyword"
+                            ]
+                        ]
                     ]
                  ]
             ]
