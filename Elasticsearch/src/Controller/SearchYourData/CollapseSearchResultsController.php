@@ -49,6 +49,7 @@ class CollapseSearchResultsController extends AbstractController
                         ],
                         [
                             'name' => 'ascId',
+                            "_source" => false,
                             'size' => 20,
                             "sort" => [
                                 '_doc.id' => [

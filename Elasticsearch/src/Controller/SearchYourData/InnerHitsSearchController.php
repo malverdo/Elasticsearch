@@ -40,9 +40,12 @@ class InnerHitsSearchController extends AbstractController
                             ]
                         ],
                         'inner_hits' => [
-                            "_source" => false,
-                                "docvalue_fields" => [
-                                "_docNested.votes.voter.keyword"
+                                [
+                                    'name' => 'voterAll',
+                                    "_source" => false,
+                                    "docvalue_fields" => [
+                                        "_docNested.votes.voter.keyword"
+                                ]
                             ]
                         ]
                     ]
