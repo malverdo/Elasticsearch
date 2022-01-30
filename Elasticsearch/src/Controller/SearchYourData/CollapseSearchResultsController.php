@@ -26,23 +26,23 @@ class CollapseSearchResultsController extends AbstractController
     public function index(): Response
     {
         $params = [
-            'index' => 'my_index',
+            'index' => 'card_index',
             'size' => 20,
             'body'  => [
                 'query' => [
                     'match' => [
-                        'testField.creditCardType' =>  'MasterCard'
+                        '_doc.creditCardType' =>  'MasterCard'
                     ]
                 ],
                 'collapse' => [
-                    'field' =>  'testField.cardId',
+                    'field' =>  '_doc.cardId',
                     'inner_hits' => [
                         [
                             'name' => 'descId',
-                            'collapse' => ['field' => 'testField.roleId'],
+                            'collapse' => ['field' => '_doc.roleId'],
                             'size' => 20,
                             "sort" => [
-                                'testField.id' => [
+                                '_doc.id' => [
                                     "order" => "desc"
                                 ]
                             ]
@@ -51,7 +51,7 @@ class CollapseSearchResultsController extends AbstractController
                             'name' => 'ascId',
                             'size' => 20,
                             "sort" => [
-                                'testField.id' => [
+                                '_doc.id' => [
                                     "order" => "asc"
                                 ]
                             ]
@@ -60,7 +60,7 @@ class CollapseSearchResultsController extends AbstractController
 
                 ],
                 'sort' => [
-                   'testField.roleId' => [
+                   '_doc.roleId' => [
                        "order" => "desc"
                    ]
                 ]

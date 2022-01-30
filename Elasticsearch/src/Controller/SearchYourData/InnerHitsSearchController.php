@@ -32,10 +32,16 @@ class InnerHitsSearchController extends AbstractController
             'size' => 1,
             'body'  => [
                 'query' => [
-                    'match' => [
-                        "_doc.data.aboutMe" => 'tempora'
+                    'nested' => [
+                        'path' => 'data.lastNameUser',
+                        'query' => [
+                            'match' => [
+                                "_doc.ban" => true
+                            ]
+                        ],
+                        'inner_hits' => []
                     ]
-                ]
+                 ]
             ]
         ];
         $response = $this->clientElasticSearch->search($params);
