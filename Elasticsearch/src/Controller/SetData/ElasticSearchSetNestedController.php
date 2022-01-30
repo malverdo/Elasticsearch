@@ -43,10 +43,10 @@ class ElasticSearchSetNestedController extends AbstractController
 
         $client = $this->clientElasticSearch->getClient();
 
-        for ($i = 1; $i <= 1000; $i++) {
+        for ($i = 1; $i <= 300; $i++) {
 
-
-            for ($i = 1; $i <= 20; $i++) {
+            $array = [];
+            for ($i = 1; $i <= 5; $i++) {
                 $arrayData =  [
                     'value' => rand(0,3),
                     'voter' => $this->faker->lastName,
