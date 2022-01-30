@@ -27,16 +27,16 @@ class InnerHitsSearchController extends AbstractController
     {
 
         $params = [
-            'index' => 'card_index',
+            'index' => 'index_nested',
             'track_total_hits' => true,
             'size' => 1,
             'body'  => [
                 'query' => [
                     'nested' => [
-                        'path' => 'data.lastNameUser',
+                        'path' => '_docNested',
                         'query' => [
                             'match' => [
-                                "_doc.ban" => true
+                                "_docNested.author" => 'Hoeger'
                             ]
                         ],
                         'inner_hits' => []

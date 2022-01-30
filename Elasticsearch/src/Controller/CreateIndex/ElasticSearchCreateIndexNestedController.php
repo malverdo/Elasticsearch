@@ -38,10 +38,8 @@ class ElasticSearchCreateIndexNestedController extends AbstractController
             'body'  => [
                 'mappings' => [
                     'properties' => [
-                        '_doc' => [
-                            'properties' => [
-                                'comments '=>[ 'type' => 'nested'],
-                            ]
+                        '_docNested' => [
+                            'type' => 'nested'
                         ]
                     ]
                 ],

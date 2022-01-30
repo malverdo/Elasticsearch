@@ -43,16 +43,15 @@ class ElasticSearchSetNestedController extends AbstractController
 
         $client = $this->clientElasticSearch->getClient();
 
-        for ($i = 1; $i <= 12234; $i++) {
+        for ($i = 1; $i <= 12224; $i++) {
 
 
             $params = [
-                'index' => 'index_Nested',
+                'index' => 'index_nested',
                 'body'  => [
                     '_docNested' => [
-                        'comments'=> [
                             'id' => mt_rand(),
-                            'author' => $this->faker->lastName,
+                            'author' => 'Hoeger',
                             'text' => $this->faker->text,
                             'votes' => [
                                 'value' => rand(0,3),
@@ -61,7 +60,7 @@ class ElasticSearchSetNestedController extends AbstractController
                                 'text' => $this->faker->text(55),
                             ],
                             'date' => $this->faker->dateTime,
-                        ],
+
                     ]
                 ]
             ];
