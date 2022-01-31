@@ -43,6 +43,7 @@ services:
             - elasticsearchData:/usr/share/elasticsearch/data:z
             - /home/${HOMENAME}/${ROOTNAMEPROJECT}/deployment/docker/dev/ElasticsearchBd/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
         environment:
+            ES_JAVA_OPTS: "-Xmx256m -Xms256m"
             discovery.type: single-node
         ports:
              - "9200:9200"
