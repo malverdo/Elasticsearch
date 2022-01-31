@@ -32,12 +32,22 @@ class RetrieveFieldsSelectedSieldsController extends AbstractController
             'size' => 10,
             'body'  => [
                 'query' => [
-                    'match' => [
-                        "_docNested.author" => 'Hoeger'
-                    ],
+                    'nested' => [
+                        'path' => '_docNested',
+                        'query' => [
+                            'match' => [
+                                "_docNested.author" => 'Hoeger'
+                            ]
+                        ]
                     ]
-                ]
-
+                ],
+                'fields' => [
+                    "_docNested.author.*",
+                    "_docNested.votes.voter.*",
+                    "_docNested.votes.date.date.*",
+                ],
+                "_source" => true
+            ]
         ];
         $response = $this->clientElasticSearch->search($params);
         dd($response);

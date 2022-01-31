@@ -45,7 +45,11 @@ class HighlightingSearchController extends AbstractController
                             'boundary_scanner' => 'word',
                         ]
                     ]
-                ]
+                ],
+                'fields' => [
+                    "_doc.data.*",
+                ],
+                "_source" => false
             ]
         ];
         $response = $this->clientElasticSearch->search($params);
