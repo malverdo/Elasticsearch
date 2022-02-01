@@ -32,7 +32,7 @@ class ElasticSearchCreateTemplateController extends AbstractController
     {
         $client = $this->clientElasticSearch->getClient();
         $params = [
-            'id' => 'script_test_new',
+            'id' => 'script_test',
             'body' => [
                 'script'  => [
                     'lang' => 'mustache',
