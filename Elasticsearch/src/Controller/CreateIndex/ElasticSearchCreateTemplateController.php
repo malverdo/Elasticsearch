@@ -47,13 +47,14 @@ class ElasticSearchCreateTemplateController extends AbstractController
                                 ]
                             ]
                         ],
-                        'form' => "{{ from }}",
-                        'size' => "{{ size }}"
+                        'from' => "{{ from }}",
+                        'size' => "{{ size }}",
+                        'track_total_hits' => true,
                     ],
                     'params' => [
                         "query_string" => "My query string",
                         "from" => 0,
-                        "size" =>5,
+                        "size" => 5,
                     ]
                 ]
             ]
