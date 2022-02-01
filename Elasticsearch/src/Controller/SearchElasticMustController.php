@@ -27,8 +27,8 @@ class SearchElasticMustController extends AbstractController
     {
 
         $params = [
-            'index' => 'my_index',
-            'size' => 99,
+            'index' => 'card_index',
+            'size' => 2,
             'body'  => [
                 'query' => [
                     'bool' => [
