@@ -29,15 +29,32 @@ class TemplateSearchController extends AbstractController
         $params = [
             'index' => 'index_nested',
             'body' => [
-                'id' => 'script_test',
-                'params' => [
-                    "query_string" => "Hoeger",
-                    "from" => 0,
-                    "size" => 10
+                [
+
+                ],
+                [
+                    'id' => 'script_test',
+                    'params' => [
+                        "query_string" => "Hoeger",
+                        "from" => 0,
+                        "size" => 10
+                    ]
+                ],
+                [
+
+                ],
+                [
+                    'id' => 'script_test',
+                    'params' => [
+                        "query_string" => "Hoeger",
+                        "from" => 0,
+                        "size" => 10
+                    ]
                 ]
             ]
         ];
-        $response = $this->clientElasticSearch->searchTemplate($params);
+        $response = $this->clientElasticSearch->msearchTemplate($params);
+//        $response = $this->clientElasticSearch->searchTemplate($params);
         dd($response);
 
 
