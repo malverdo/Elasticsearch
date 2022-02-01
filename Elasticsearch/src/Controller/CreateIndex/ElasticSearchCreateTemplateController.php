@@ -42,19 +42,19 @@ class ElasticSearchCreateTemplateController extends AbstractController
                                 'path' => '_docNested',
                                 'query' => [
                                     'match' => [
-                                        "_docNested.author" => '{{query_string}}'
+                                        "_docNested.author" => '{{query_string}}{{^query_string}}Hoeger{{/query_string}}'
                                     ]
                                 ]
                             ]
                         ],
-                        'from' => "{{ from }}",
-                        'size' => "{{ size }}",
+                        'from' => "{{ from }}{{^from}}0{{/from}}",
+                        'size' => "{{ size }}{{^size}}10{{/size}}",
                         'track_total_hits' => true,
                     ],
                     'params' => [
                         "query_string" => "My query string",
                         "from" => 0,
-                        "size" => 5,
+                        "size" => 1,
                     ]
                 ]
             ]

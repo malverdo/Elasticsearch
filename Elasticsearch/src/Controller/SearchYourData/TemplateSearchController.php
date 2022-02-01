@@ -37,7 +37,7 @@ class TemplateSearchController extends AbstractController
                     'params' => [
                         "query_string" => "Hoeger",
                         "from" => 0,
-                        "size" => 10
+                        "size" => 2
                     ]
                 ],
                 [
