@@ -51,7 +51,8 @@ class ElasticSearchCreateIndexTypeController extends AbstractController
                                 'companyEmail' => ['type' => 'text'],
                                 'company' => ['type' => 'keyword'],
                                 'creditCardNumber' => ['type' => 'long'],
-                                'price' => ['type' => 'text'],
+                                'product' => ['type' => 'keyword'],
+                                'price' => ['type' => 'keyword'],
                                     'offer' => [
                                         'type' => 'nested',
                                         'properties' => [
@@ -59,7 +60,7 @@ class ElasticSearchCreateIndexTypeController extends AbstractController
                                                 'type' => 'keyword'
                                             ],
                                             'price' => [
-                                                'type' => 'text'
+                                                'type' => 'keyword'
                                             ],
                                         ]
                                     ],

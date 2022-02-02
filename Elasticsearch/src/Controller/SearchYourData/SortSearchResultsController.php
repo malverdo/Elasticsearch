@@ -33,17 +33,18 @@ class SortSearchResultsController extends AbstractController
             'body'  => [
                 'query' => [
                     'term' => [
-                        '_doc.creditCardType' =>  'MasterCard'
+                        '_doc.product' =>  'chocolate'
                     ]
                 ],
                 'sort' => [
-                    '_doc.id' => [
-                        'order' => 'asc'
-                    ],
-                    '_doc.dateTimeThisMonth.date' => [
+                    '_doc.price' => [
                         'order' => 'asc',
-                        "format" => "strict_date_optional_time_nanos"
-                    ]
+                        'mode' => 'avg'
+                    ],
+//                    '_doc.dateTimeThisMonth.date' => [
+//                        'order' => 'asc',
+//                        "format" => "strict_date_optional_time_nanos"
+//                    ]
                 ]
             ]
         ];
