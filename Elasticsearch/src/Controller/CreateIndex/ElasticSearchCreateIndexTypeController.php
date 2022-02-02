@@ -60,7 +60,7 @@ class ElasticSearchCreateIndexTypeController extends AbstractController
                                                 'type' => 'keyword'
                                             ],
                                             'price' => [
-                                                'type' => 'keyword'
+                                                'type' => 'long'
                                             ],
                                         ]
                                     ],
