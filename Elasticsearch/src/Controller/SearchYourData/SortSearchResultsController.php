@@ -38,9 +38,12 @@ class SortSearchResultsController extends AbstractController
                 ],
                 'sort' => [
                     '_doc.id' => [
-                        'order' => 'desc'
+                        'order' => 'asc'
                     ],
-                    '_score'
+                    '_doc.dateTimeThisMonth.date' => [
+                        'order' => 'asc',
+                        "format" => "strict_date_optional_time_nanos"
+                    ]
                 ]
             ]
         ];
