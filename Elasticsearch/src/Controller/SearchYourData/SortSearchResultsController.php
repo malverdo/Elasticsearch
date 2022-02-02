@@ -32,14 +32,15 @@ class SortSearchResultsController extends AbstractController
             'track_total_hits' => true,
             'body'  => [
                 'query' => [
-                    'match' => [
+                    'term' => [
                         '_doc.creditCardType' =>  'MasterCard'
                     ]
                 ],
                 'sort' => [
                     '_doc.id' => [
                         'order' => 'desc'
-                    ]
+                    ],
+                    '_score'
                 ]
             ]
         ];
