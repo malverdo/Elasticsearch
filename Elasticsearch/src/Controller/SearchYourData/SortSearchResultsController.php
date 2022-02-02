@@ -25,6 +25,28 @@ class SortSearchResultsController extends AbstractController
      */
     public function index(): Response
     {
+
+        $client = $this->clientElasticSearch;
+        $params = [
+            'index' => 'card_index',
+            'track_total_hits' => true,
+            'body'  => [
+                'query' => [
+                    'match' => [
+                        '_doc.creditCardType' =>  'MasterCard'
+                    ]
+                ],
+                'sort' => [
+                    '_doc.id' => [
+                        'order' => 'desc'
+                    ]
+                ]
+            ]
+        ];
+        $response = $client->search($params);
+
+        dd($response);
+
         return $this->render('sort_search_results/index.html.twig', [
             'controller_name' => 'SortSearchResultsController',
         ]);
