@@ -51,6 +51,19 @@ class ElasticSearchCreateIndexTypeController extends AbstractController
                                 'companyEmail' => ['type' => 'text'],
                                 'company' => ['type' => 'keyword'],
                                 'creditCardNumber' => ['type' => 'long'],
+                                'price' => ['type' => 'text'],
+                                    'offer' => [
+                                        'type' => 'nested',
+                                        'properties' => [
+                                            'color' => [
+                                                'type' => 'keyword'
+                                            ],
+                                            'price' => [
+                                                'type' => 'text'
+                                            ],
+                                        ]
+                                    ],
+
                                 'dateTimeThisMonth' => ['type' => 'object', 'properties' => [
                                     'date' => [
                                         'type' => 'date',
