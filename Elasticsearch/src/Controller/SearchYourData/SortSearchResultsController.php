@@ -30,6 +30,7 @@ class SortSearchResultsController extends AbstractController
         $params = [
             'index' => 'card_index',
             'track_total_hits' => true,
+            'size' => 21,
             'body'  => [
                 'query' => [
                     'term' => [
@@ -37,10 +38,21 @@ class SortSearchResultsController extends AbstractController
                     ]
                 ],
                 'sort' => [
-                    '_doc.price' => [
-                        'order' => 'asc',
-                        'mode' => 'avg'
-                    ],
+//                    '_doc.price' => [
+//                        'order' => 'asc',
+//                        'mode' => 'sum'
+//                    ],
+                    '_doc.offer.price' => [
+                        "mode" =>  "sum",
+                        "order" => "asc",
+                        "nested" => [
+                            'path' => '_doc.offer',
+                            'filter' => [
+                                'term' => ['_doc.offer.color' => 'Gold']
+                            ]
+                        ]
+                    ]
+
 //                    '_doc.dateTimeThisMonth.date' => [
 //                        'order' => 'asc',
 //                        "format" => "strict_date_optional_time_nanos"
