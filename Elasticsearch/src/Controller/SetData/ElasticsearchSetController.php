@@ -57,6 +57,20 @@ class ElasticsearchSetController extends AbstractController
                             'city' => $this->faker->city,
                             'companyEmail' => $this->faker->companyEmail,
                             'company' => $this->faker->company,
+                            'price' => [
+                                mt_rand(0,1000),
+                                mt_rand(0,1000),
+                                mt_rand(0,1000),
+                            ],
+                            'product' => 'chocolate',
+                            'offer' => [
+                                'color' => $this->faker->colorName,
+                                'price' => [
+                                    mt_rand(0,1000),
+                                    mt_rand(0,1000),
+                                    mt_rand(0,1000)
+                                ]
+                            ],
                             'creditCardNumber' => $this->faker->creditCardNumber,
                             'dateTimeThisMonth' => ['date' => mt_rand(1243345370, 1643345370)],
                             'dateTimeRegistrationCard' => $this->faker->dateTime,
