@@ -32,13 +32,13 @@ class FilterPostSearchResultsController extends AbstractController
             'track_total_hits' => true,
             'size' => 11,
             'body'  => [
-//                'query' => [
-//                    'bool' => [
-//                        'filter' => [
-//                            ['term' => ['_doc.ban' => true]],
-//                        ]
-//                    ]
-//                ],
+                'query' => [
+                    'bool' => [
+                        'filter' => [
+                            ['term' => ['_doc.ban' => true]],
+                        ]
+                    ]
+                ],
                 'aggs' => [
                     'creditCardType' => [
                         'terms' => ['field' => '_doc.creditCardType']
