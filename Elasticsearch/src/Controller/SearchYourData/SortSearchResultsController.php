@@ -38,20 +38,21 @@ class SortSearchResultsController extends AbstractController
                     ]
                 ],
                 'sort' => [
-//                    '_doc.price' => [
-//                        'order' => 'asc',
-//                        'mode' => 'sum'
-//                    ],
-                    '_doc.offer.price' => [
-                        "mode" =>  "sum",
-                        "order" => "asc",
-                        "nested" => [
-                            'path' => '_doc.offer',
-                            'filter' => [
-                                'term' => ['_doc.offer.color' => 'Gold']
-                            ]
-                        ]
-                    ]
+                    '_doc.price' => [
+                        'order' => 'asc',
+                        'mode' => 'sum'
+                    ],
+//                    '_doc.offer.price' => [
+//                        "mode" =>  "sum",
+//                        "order" => "asc",
+//                        "nested" => [
+//                            'path' => '_doc.offer',
+//                            'filter' => [
+//                                'term' => ['_doc.offer.color' => 'Gold']
+//                            ],
+//                            'max_children' => 10
+//                        ]
+//                    ]
 
 //                    '_doc.dateTimeThisMonth.date' => [
 //                        'order' => 'asc',
