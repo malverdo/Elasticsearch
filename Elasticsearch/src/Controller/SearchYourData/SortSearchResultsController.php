@@ -38,6 +38,8 @@ class SortSearchResultsController extends AbstractController
                     ]
                 ],
                 'sort' => [
+
+                    // сортировка по nested
                     '_doc.offer.price' => [
                         "mode" =>  "min",
                         "order" => "asc",
@@ -49,11 +51,13 @@ class SortSearchResultsController extends AbstractController
                             'max_children' => 10
                         ]
                     ],
+                    // сортировка несопоставленный тип
                     '_doc.creditCardNumber' => [
                         "unmapped_type" => 'long',
                         'order' => 'asc',
                         'mode' => 'max'
                     ],
+                    // сортировка date format
                     '_doc.dateTimeThisMonth.date' => [
                         'order' => 'desc',
                         "format" => "strict_date_optional_time_nanos"
