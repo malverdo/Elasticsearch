@@ -39,7 +39,7 @@ class ElasticsearchSetController extends AbstractController
     {
         $client = $this->clientElasticSearch->getClient();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
 
 
         $params = [

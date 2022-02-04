@@ -31,8 +31,27 @@ class BooleanQuerySearchController extends AbstractController
             'index' => 'card_index',
             'track_total_hits' => true,
             'size' => 21,
-            'body'  => [
+            'body' => [
                 'query' => [
+                    'bool' => [
+                        "_name" => "testBB",
+                        "must" => [
+                            "term" => ["_doc.type" => "wally"]
+                        ],
+                        "filter" => [
+                            'terms' => ['_doc.ban' => [true], "_name" => "testAA"]
+
+                        ],
+                        "must_not" => [
+                            "range" => [
+                                "_doc.roleId" => ["gte" => 2, "lte" => 5]
+                            ]
+                        ],
+                        'should' => [
+                            ['terms' => ['_doc.price' => [277,222]]],
+                        ],
+                        "minimum_should_match" => 1
+                    ]
 
                 ]
             ]
