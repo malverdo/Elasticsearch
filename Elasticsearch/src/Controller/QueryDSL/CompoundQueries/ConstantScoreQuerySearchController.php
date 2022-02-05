@@ -32,21 +32,16 @@ class ConstantScoreQuerySearchController extends AbstractController
         $params = [
             'index' => 'card_index',
             'track_total_hits' => true,
-            'size' => 21,
+            'size' => 51,
             'body' => [
                 'query' => [
-                    'boosting' => [
-                        'positive' => [
+                    'constant_score' => [
+                        'filter' => [
                             'term' => [
                                 '_doc.data.aboutMe' => 'ipsam'
                             ]
                         ],
-                        'negative' => [
-                            'term' => [
-                                '_doc.data.aboutMe' => 'perferendis'
-                            ]
-                        ],
-                        "negative_boost" => 0.5
+                        "boost" => 1.2
                     ]
                 ]
             ]
