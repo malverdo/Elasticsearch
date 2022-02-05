@@ -45,7 +45,7 @@ class BoostingQuerySearchController extends AbstractController
                                '_doc.data.aboutMe' => 'perferendis'
                            ]
                        ],
-                       "negative_boost" => 0.8
+                       "negative_boost" => 0.5
                    ]
                 ]
             ]
