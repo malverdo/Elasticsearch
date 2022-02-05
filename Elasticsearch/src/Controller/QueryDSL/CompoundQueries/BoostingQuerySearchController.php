@@ -15,14 +15,9 @@ class BoostingQuerySearchController extends AbstractController
      */
     private $clientElasticSearch;
 
-
-    /**
-     * @param CreateClientElasticSearch $clientElasticSearch
-     */
-    public function __construct(
-        CreateClientElasticSearch $clientElasticSearch
-    ) {
-        $this->clientElasticSearch = $clientElasticSearch;
+    public function __construct(CreateClientElasticSearch $clientElasticSearch)
+    {
+        $this->clientElasticSearch = $clientElasticSearch->getClient();
     }
 
     /**
@@ -38,7 +33,19 @@ class BoostingQuerySearchController extends AbstractController
             'size' => 21,
             'body' => [
                 'query' => [
-                    '2' => 2
+                   'boosting' => [
+                       'positive' => [
+                           'term' => [
+                               '_doc.data.aboutMe' => 'ipsam'
+                           ]
+                       ],
+                       'negative' => [
+                           'term' => [
+                               '_doc.data.aboutMe' => 'perferendis'
+                           ]
+                       ],
+                       "negative_boost" => 0.0
+                   ]
                 ]
             ]
         ];
