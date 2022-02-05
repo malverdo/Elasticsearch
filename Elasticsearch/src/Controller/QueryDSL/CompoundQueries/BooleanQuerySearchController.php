@@ -49,14 +49,19 @@ class BooleanQuerySearchController extends AbstractController
                         ],
                         'should' => [
                             ['terms' => ['_doc.price' => [277,222]]],
-
                         ],
                         "minimum_should_match" => 1
-                    ],
-                    'terms' => [
-                        "filed" => '_doc.price'
                     ]
 
+                ],
+                "aggs" => [
+                    "terms_roleId" => [
+                        "terms" => [
+                            "field" => '_doc.price',
+                            'min_doc_count' => 2,
+                            "max_doc_count" =>  3
+                        ]
+                    ]
                 ]
             ]
         ];
