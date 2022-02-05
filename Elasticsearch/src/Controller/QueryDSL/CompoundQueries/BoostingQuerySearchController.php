@@ -21,6 +21,7 @@ class BoostingQuerySearchController extends AbstractController
     }
 
     /**
+     *
      * @Route("/boosting/query/search", name="boosting_query_search")
      */
     public function index(): Response
@@ -44,7 +45,7 @@ class BoostingQuerySearchController extends AbstractController
                                '_doc.data.aboutMe' => 'perferendis'
                            ]
                        ],
-                       "negative_boost" => 0.0
+                       "negative_boost" => 0.8
                    ]
                 ]
             ]
