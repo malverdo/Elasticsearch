@@ -49,8 +49,12 @@ class BooleanQuerySearchController extends AbstractController
                         ],
                         'should' => [
                             ['terms' => ['_doc.price' => [277,222]]],
+
                         ],
                         "minimum_should_match" => 1
+                    ],
+                    'terms' => [
+                        "filed" => '_doc.price'
                     ]
 
                 ]
