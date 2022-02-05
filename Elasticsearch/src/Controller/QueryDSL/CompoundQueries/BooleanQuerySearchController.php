@@ -58,8 +58,7 @@ class BooleanQuerySearchController extends AbstractController
                     "terms_roleId" => [
                         "terms" => [
                             "field" => '_doc.price',
-                            'min_doc_count' => 2,
-                            "max_doc_count" =>  3
+                            'min_doc_count' => 2
                         ]
                     ]
                 ]
