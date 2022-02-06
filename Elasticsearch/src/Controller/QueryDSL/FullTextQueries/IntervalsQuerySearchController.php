@@ -33,7 +33,33 @@ class IntervalsQuerySearchController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-
+                    "intervals" => [
+                        "_doc.data.aboutMe" => [
+                            "all_of" => [
+                                "ordered" => false,
+                                "intervals"=> [
+                                [
+                                    "match"=> [
+                                    "query"=> "Qui",
+                                        "max_gaps"=> 0,
+                                        "ordered"=> true
+                                    ]
+                                ],
+                                [
+                                    "any_of"=> [
+                                    "intervals"=> [
+                                            [
+                                                "match"=> [
+                                                    "query"=> "consequatur"
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                            ]
+                        ]
+                    ]
                 ]
             ]
         ];
