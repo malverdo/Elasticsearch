@@ -38,7 +38,15 @@ class FunctionScoreQuerySearchController extends AbstractController
                         'query' => [
                             "match" => ['_doc.data.aboutMe' => 'ipsam'],
                         ],
-                        "script_score"
+                        "script_score" => [
+                            "script" => [
+                                "params" => [
+                                    "a" => 5,
+                                    "b" => 1.2
+                                ],
+                                "source" => "return 2 * 2"
+                            ]
+                        ]
                     ]
                 ]
             ]
