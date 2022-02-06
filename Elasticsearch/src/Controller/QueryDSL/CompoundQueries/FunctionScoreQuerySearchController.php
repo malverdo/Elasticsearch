@@ -44,7 +44,7 @@ class FunctionScoreQuerySearchController extends AbstractController
                                     "a" => 5,
                                     "b" => 1.2
                                 ],
-                                "source" => "return 2 * 2"
+                                "source" => "1.2 * ['_doc.roleId'].value"
                             ]
                         ]
                     ]
