@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controller\QueryDSL\FullTextQueries;
+namespace App\Controller\QueryDSL\JoiningQueries;
 
 use App\Service\CreateClientElasticSearch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MatchQuerySearchController extends AbstractController
+class NestedQuerySearchController extends AbstractController
 {
 
     /**
@@ -20,12 +20,12 @@ class MatchQuerySearchController extends AbstractController
         $this->clientElasticSearch = $clientElasticSearch->getClient();
     }
 
-
     /**
-     * @Route("/match/query/search", name="match_query_search")
+     * @Route("/nested/query/search", name="nested_query_search")
      */
     public function index(): Response
     {
+
 
         $client = $this->clientElasticSearch;
         $params = [
@@ -47,8 +47,8 @@ class MatchQuerySearchController extends AbstractController
 
         dd($response);
 
-        return $this->render('match_query_search/index.html.twig', [
-            'controller_name' => 'MatchQuerySearchController',
+        return $this->render('nested_query_search/index.html.twig', [
+            'controller_name' => 'NestedQuerySearchController',
         ]);
     }
 }
