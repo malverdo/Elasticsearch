@@ -34,15 +34,11 @@ class FunctionScoreQuerySearchController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'dis_max' => [
-                        'queries' => [
-                            [
-                                'term' => [
-                                    '_doc.data.aboutMe' => 'ipsam'
-                                ]
-                            ]
+                    'function_score' => [
+                        'query' => [
+                            "match" => ['_doc.data.aboutMe' => 'ipsam'],
                         ],
-                        "tie_breaker" => 0.9
+                        "script_score"
                     ]
                 ]
             ]
