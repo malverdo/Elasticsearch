@@ -32,7 +32,11 @@ class MatchAllQuerySearchController extends AbstractController
             'track_total_hits' => true,
             'size' => 51,
             'body' => [
-
+                'query' => [
+                    "match_all" => [
+                        "boost" => 1.0
+                    ]
+                ]
             ]
         ];
         $response = $client->search($params);
