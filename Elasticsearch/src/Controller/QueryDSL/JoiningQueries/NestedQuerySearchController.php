@@ -37,8 +37,17 @@ class NestedQuerySearchController extends AbstractController
                     'nested' => [
                         'path' => '_doc.offer',
                         'query' => [
-                            'match' => [
-                                "_doc.offer.price" => 677
+                            'bool' => [
+                                'must' => [
+                                    'match' => [
+                                        "_doc.offer.price" => 677
+                                    ]
+                                ],
+                                'must_not' => [
+                                    'match' => [
+                                        "_doc.offer.price" => 274
+                                    ]
+                                ]
                             ]
                         ]
                     ]
