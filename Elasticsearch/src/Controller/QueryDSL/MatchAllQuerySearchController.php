@@ -34,7 +34,7 @@ class MatchAllQuerySearchController extends AbstractController
             'body' => [
                 'query' => [
                     "match_all" => [
-                        "boost" => 1.0
+                        "boost" => 1.2
                     ]
                 ]
             ]
