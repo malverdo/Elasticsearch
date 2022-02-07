@@ -33,7 +33,16 @@ class NestedQuerySearchController extends AbstractController
             'track_total_hits' => true,
             'size' => 51,
             'body' => [
-
+                'query' => [
+                    'nested' => [
+                        'path' => '_doc.offer',
+                        'query' => [
+                            'match' => [
+                                "_doc.offer.price" => 677
+                            ]
+                        ]
+                    ]
+                ]
             ]
         ];
         $response = $client->search($params);
