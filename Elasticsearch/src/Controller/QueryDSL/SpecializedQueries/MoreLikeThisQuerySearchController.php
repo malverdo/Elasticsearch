@@ -25,6 +25,25 @@ class MoreLikeThisQuerySearchController extends AbstractController
      */
     public function index(): Response
     {
+
+        $client = $this->clientElasticSearch;
+        $params = [
+            'index' => 'card_index',
+            'track_total_hits' => true,
+            'size' => 51,
+            'body' => [
+                'query' => [
+                    "match_all" => [
+                        "boost" => 1.2
+                    ]
+                ]
+            ]
+        ];
+        $response = $client->search($params);
+
+        dd($response);
+
+
         return $this->render('more_like_this_query_search/index.html.twig', [
             'controller_name' => 'MoreLikeThisQuerySearchController',
         ]);
