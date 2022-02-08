@@ -33,8 +33,11 @@ class MoreLikeThisQuerySearchController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    "match_all" => [
-                        "boost" => 1.2
+                    'more_like_this' => [
+                        "fields" => ["_doc.data.aboutMe"],
+                        "like" => 'consequatur',
+                        "min_term_freq" => 1,
+                        "max_query_terms" => 12
                     ]
                 ]
             ]

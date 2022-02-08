@@ -78,7 +78,7 @@ class ElasticsearchSetController extends AbstractController
                             'data' => [
                                 'lastNameUser' => $this->faker->lastName,
                                 'firstNameUser' => $this->faker->firstName,
-                                'aboutMe' => $this->faker->text(500)
+                                'aboutMe' => $this->faker->text(200) . ' consequatur' . ' consequatur' . ' onsequatur'
                             ],
                             ]
                         ]
