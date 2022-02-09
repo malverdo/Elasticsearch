@@ -28,16 +28,18 @@ class PercolateQuerySearchController extends AbstractController
 
         $client = $this->clientElasticSearch;
         $params = [
-            'index' => 'card_index',
+            'index' => 'index_percolator_cars',
             'track_total_hits' => true,
             'size' => 51,
             'body' => [
                 'query' => [
-                    'more_like_this' => [
-                        "fields" => ["_doc.data.aboutMe"],
-                        "like" => 'consequatur null',
-                        "min_term_freq" => 1,
-                        "max_query_terms" => 12
+                    'percolate' => [
+                        "field" => "query",
+                        "document" => [
+                            "brand" => "Tesla",
+                            "model" => 5,
+                            "price" => 50000
+                        ]
                     ]
                 ]
             ]
