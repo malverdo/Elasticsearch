@@ -33,11 +33,7 @@ class PercolateQuerySearchController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'more_like_this' => [
-                        "fields" => ["_doc.data.aboutMe"],
-                        "like" => 'consequatur null',
-                        "min_term_freq" => 1,
-                        "max_query_terms" => 12
+
                     ]
                 ]
             ]
