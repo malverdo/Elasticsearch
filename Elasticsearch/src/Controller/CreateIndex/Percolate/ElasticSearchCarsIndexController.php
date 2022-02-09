@@ -30,6 +30,29 @@ class ElasticSearchCarsIndexController extends AbstractController
      */
     public function index(): Response
     {
+
+        $client = $this->clientElasticSearch->getClient();
+        $params = [
+            'index' => 'index_cars',
+            'body' => [
+                'mappings' => [
+                    'properties' => [
+                        "brand" => ["type" => "keyword"],
+                        "model" => ["type" => "keyword"],
+                        "price" => ["type" => "long"]
+                    ]
+                ],
+                'settings' => [
+                    'number_of_shards' => 2,
+                    'number_of_replicas' => 0
+                ]
+
+            ]
+
+        ];
+
+        $response = $client->indices()->create($params);
+
         return $this->render('elastic_search_cars_index/index.html.twig', [
             'controller_name' => 'ElasticSearchCarsIndexController',
         ]);
