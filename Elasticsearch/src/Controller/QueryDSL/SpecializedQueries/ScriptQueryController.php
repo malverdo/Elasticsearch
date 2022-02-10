@@ -25,6 +25,23 @@ class ScriptQueryController extends AbstractController
      */
     public function index(): Response
     {
+
+        $client = $this->clientElasticSearch->getClient();
+        $params = [
+            'index' => 'card_index',
+            'body' => [
+                'mappings' => [
+                    'properties' => [
+                        "brand" => ["type" => "keyword"],
+                        "model" => ["type" => "keyword"],
+                        "price" => ["type" => "long"]
+                    ]
+                ]
+            ]
+        ];
+
+        $response = $client->indices()->create($params);
+
         return $this->render('script_query/index.html.twig', [
             'controller_name' => 'ScriptQueryController',
         ]);
