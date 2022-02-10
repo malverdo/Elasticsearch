@@ -26,21 +26,30 @@ class ScriptQueryController extends AbstractController
     public function index(): Response
     {
 
-        $client = $this->clientElasticSearch->getClient();
+        $client = $this->clientElasticSearch;
         $params = [
             'index' => 'card_index',
             'body' => [
-                'mappings' => [
-                    'properties' => [
-                        "brand" => ["type" => "keyword"],
-                        "model" => ["type" => "keyword"],
-                        "price" => ["type" => "long"]
+                'query' => [
+                    'bool' => [
+                        "filter" => [
+                            'script' => [
+                                'script' => "
+                                    double amount = doc['_doc.roleId'].value;
+                                    if (doc['_doc.product'].value == 'chocolate') {
+                                      amount -= 5;
+                                    }
+                                    return amount < 5;
+                                  "
+                            ]
+                        ]
                     ]
                 ]
             ]
         ];
 
-        $response = $client->indices()->create($params);
+        $response = $client->search($params);
+        dd($response);
 
         return $this->render('script_query/index.html.twig', [
             'controller_name' => 'ScriptQueryController',
