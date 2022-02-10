@@ -37,9 +37,9 @@ class ScriptQueryController extends AbstractController
                                 'script' => "
                                     double amount = doc['_doc.roleId'].value;
                                     if (doc['_doc.product'].value == 'chocolate') {
-                                      amount -= 5;
+                                      amount -= 2;
                                     }
-                                    return amount < 5;
+                                    return amount > 5;
                                   "
                             ]
                         ]
