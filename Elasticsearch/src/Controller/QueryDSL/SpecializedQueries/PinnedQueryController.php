@@ -34,11 +34,15 @@ class PinnedQueryController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'more_like_this' => [
-                        "fields" => ["_doc.data.aboutMe"],
-                        "like" => 'consequatur null',
-                        "min_term_freq" => 1,
-                        "max_query_terms" => 12
+                    'pinned' => [
+                        "ids" => ["lq2_zX4B4GidfWRd5H_T", "mK2_zX4B4GidfWRd5H_g"],
+                        "organic" => [
+                            'bool' => [
+                                'filter' => [
+                                    ['term' => ['_doc.data.aboutMe' => "maxime"]],
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]
