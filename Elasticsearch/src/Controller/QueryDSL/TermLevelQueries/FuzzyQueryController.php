@@ -30,18 +30,22 @@ class FuzzyQueryController extends AbstractController
         $params = [
             'index' => 'card_index',
             'track_total_hits' => true,
-            'size' => 51,
+            'size' => 10,
             'body' => [
                 'query' => [
-                    'bool' => [
-                        'must_not' => [
-                            'exists' => [
-                                'field' => "_doc.data.aboutMe"
+                    'fuzzy' => [
+                        '_doc.company' => [
+                                'value' => 'Nicolas cn',
+                                "fuzziness"=> "AUTO",
+                                "max_expansions"=> 50,
+                                "prefix_length"=> 0,
+                                "transpositions"=> true,
+                                "rewrite"=> "constant_score"
                             ]
                         ]
                     ]
                 ]
-            ]
+
         ];
         $response = $client->search($params);
 
