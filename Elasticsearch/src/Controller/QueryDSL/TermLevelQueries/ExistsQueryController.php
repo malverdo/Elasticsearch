@@ -25,6 +25,27 @@ class ExistsQueryController extends AbstractController
      */
     public function index(): Response
     {
+
+        $client = $this->clientElasticSearch;
+        $params = [
+            'index' => 'card_index',
+            'track_total_hits' => true,
+            'size' => 51,
+            'body' => [
+                'query' => [
+                    'more_like_this' => [
+                        "fields" => ["_doc.data.aboutMe"],
+                        "like" => 'consequatur null',
+                        "min_term_freq" => 1,
+                        "max_query_terms" => 12
+                    ]
+                ]
+            ]
+        ];
+        $response = $client->search($params);
+
+        dd($response);
+
         return $this->render('exists_query/index.html.twig', [
             'controller_name' => 'ExistsQueryController',
         ]);
