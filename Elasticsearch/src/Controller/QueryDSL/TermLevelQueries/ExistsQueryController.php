@@ -33,11 +33,12 @@ class ExistsQueryController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'more_like_this' => [
-                        "fields" => ["_doc.data.aboutMe"],
-                        "like" => 'consequatur null',
-                        "min_term_freq" => 1,
-                        "max_query_terms" => 12
+                    'bool' => [
+                        'must_not' => [
+                            'exists' => [
+                                'field' => "_doc.data.aboutMe"
+                            ]
+                        ]
                     ]
                 ]
             ]
