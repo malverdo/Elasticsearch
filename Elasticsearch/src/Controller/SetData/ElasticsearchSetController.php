@@ -46,7 +46,7 @@ class ElasticsearchSetController extends AbstractController
             'index' => 'card_index',
             'body'  => [
                         '_doc' => [
-                            'type'=>'wally',
+                            'type'=>'pre_wally',
                             'id' => mt_rand(1, 100000),
                             'cardId' => mt_rand(1, 100000),
                             'ban' => $this->faker->boolean,
@@ -72,8 +72,9 @@ class ElasticsearchSetController extends AbstractController
                                 ]
                             ],
                             'creditCardNumber' => $this->faker->creditCardNumber,
-                            'dateTimeThisMonth' => ['date' => mt_rand(1243345370, 1643345370)],
-                            'dateTimeRegistrationCard' => $this->faker->dateTime,
+                            'dateTimeThisMonth' => ['date' => time()],
+
+                            'dateTimeRegistrationCard' => $this->faker->dateTime('now'),
                             'creditCardType' => $this->faker->creditCardType,
                             'data' => [
                                 'lastNameUser' => $this->faker->lastName,
@@ -83,7 +84,7 @@ class ElasticsearchSetController extends AbstractController
                             ]
                         ]
         ];
-
+            dd(time());
         $response = $client->index($params);
         }
         return $this->render('elasticsearch_set/index.html.twig', [
