@@ -33,10 +33,13 @@ class RangeQueryController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'range' => [
-                        '_doc.dateTimeRegistrationCard.date' => [
-                            "gte" => "now-10M/M",
-                            "lte" => "now/d"
+                    'regexp' => [
+                        '_doc.city' => [
+                            "value"=> ".zaiahside",
+                            "flags"=> "ALL",
+                            "case_insensitive"=> true,
+                            "max_determinized_states"=> 10000,
+                            "rewrite" => "constant_score"
                         ]
                     ]
                 ]
