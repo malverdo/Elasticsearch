@@ -36,8 +36,7 @@ class RangeQueryController extends AbstractController
                     'range' => [
                         '_doc.dateTimeRegistrationCard.date' => [
                             "gte" => "now-10M/M",
-                            "lte" => "now/d",
-                            'boost' => 1.0
+                            "lte" => "now/d"
                         ]
                     ]
                 ]
