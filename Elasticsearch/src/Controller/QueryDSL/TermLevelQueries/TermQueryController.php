@@ -33,10 +33,10 @@ class TermQueryController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'range' => [
-                        '_doc.dateTimeRegistrationCard.date' => [
-                            "gte" => "now-10M/M",
-                            "lte" => "now/d"
+                    'term' => [
+                        '_doc.creditCardType' => [
+                            "value" => 'Visa',
+                            "boost" => 1.0
                         ]
                     ]
                 ]
