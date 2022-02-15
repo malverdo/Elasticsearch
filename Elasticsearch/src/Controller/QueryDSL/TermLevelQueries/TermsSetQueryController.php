@@ -33,10 +33,12 @@ class TermsSetQueryController extends AbstractController
             'size' => 51,
             'body' => [
                 'query' => [
-                    'term' => [
+                    'terms_set' => [
                         '_doc.creditCardType' => [
-                            "value" => 'Visa',
-                            "boost" => 1.0
+                           "terms" => ['Visa', 'MasterCard'],
+                            "minimum_should_match_script" => [
+                                "source" => "Math.min(params.num_terms, 5)"
+                            ],
                         ]
                     ]
                 ]
