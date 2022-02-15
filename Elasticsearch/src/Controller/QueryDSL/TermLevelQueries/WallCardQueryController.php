@@ -2,14 +2,26 @@
 
 namespace App\Controller\QueryDSL\TermLevelQueries;
 
+use App\Service\CreateClientElasticSearch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class WallCardQueryController extends AbstractController
 {
+
     /**
-     * @Route("//wall/card/query", name="_wall_card_query")
+     * @var CreateClientElasticSearch
+     */
+    private $clientElasticSearch;
+
+    public function __construct(CreateClientElasticSearch $clientElasticSearch)
+    {
+        $this->clientElasticSearch = $clientElasticSearch->getClient();
+    }
+
+    /**
+     * @Route("/wall/card/query", name="_wall_card_query")
      */
     public function index(): Response
     {
