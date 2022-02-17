@@ -30,13 +30,13 @@ class HistogramAggregationController extends AbstractController
         $params = [
             'index' => 'card_index',
             'track_total_hits' => true,
-            'size' => 0,
+            'size' => 5,
             'body' => [
                 'aggs' => [
                     'prices' => [
                         'histogram' => [
-                            'field' => '_doc.offer.price',
-                            'interval' => 100
+                            'field' => '_doc.price',
+                            'interval' => 50
                         ]
                     ]
                 ]

@@ -39,7 +39,7 @@ class ElasticsearchSetController extends AbstractController
     {
         $client = $this->clientElasticSearch->getClient();
 
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
 
 
         $params = [
@@ -60,7 +60,7 @@ class ElasticsearchSetController extends AbstractController
                             'price' => [
                                 mt_rand(0,1000),
                                 mt_rand(0,1000),
-                                mt_rand(0,1000),
+                                mt_rand(0,1000)
                             ],
                             'product' => 'chocolate',
                             'offer' => [
@@ -84,7 +84,7 @@ class ElasticsearchSetController extends AbstractController
                             ]
                         ]
         ];
-            dd(time());
+
         $response = $client->index($params);
         }
         return $this->render('elasticsearch_set/index.html.twig', [
