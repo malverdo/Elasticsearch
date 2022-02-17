@@ -25,6 +25,27 @@ class HistogramAggregationController extends AbstractController
      */
     public function index(): Response
     {
+
+        $client = $this->clientElasticSearch;
+        $params = [
+            'index' => 'card_index',
+            'track_total_hits' => true,
+            'size' => 0,
+            'body' => [
+                'aggs' => [
+                    'prices' => [
+                        'histogram' => [
+                            'field' => '_doc.offer.price',
+                            'interval' => 100
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $response = $client->search($params);
+
+        dd($response);
+
         return $this->render('histogram_aggregation/index.html.twig', [
             'controller_name' => 'HistogramAggregationController',
         ]);
