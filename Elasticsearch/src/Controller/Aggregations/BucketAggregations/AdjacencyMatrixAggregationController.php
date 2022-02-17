@@ -37,13 +37,19 @@ class AdjacencyMatrixAggregationController extends AbstractController
                         'adjacency_matrix' => [
                             'filters' => [
                                 'grpA' => [
-
+                                    'terms' => [
+                                        '_doc.data.aboutMe' => 'ipsam'
+                                    ]
                                 ],
                                 'grpB' => [
-
+                                    'terms' => [
+                                        '_doc.data.aboutMe' => 'ipsam'
+                                    ]
                                 ],
                                 'grpC' => [
-
+                                    'terms' => [
+                                        '_doc.data.aboutMe' => 'ipsam'
+                                    ]
                                 ]
                             ]
                         ]
