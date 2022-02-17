@@ -32,9 +32,21 @@ class AdjacencyMatrixAggregationController extends AbstractController
             'track_total_hits' => true,
             'size' => 51,
             'body' => [
-                'query' => [
-                    'regexp' => [
+                'aggs' => [
+                    'interactions' => [
+                        'adjacency_matrix' => [
+                            'filters' => [
+                                'grpA' => [
 
+                                ],
+                                'grpB' => [
+
+                                ],
+                                'grpC' => [
+
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]
