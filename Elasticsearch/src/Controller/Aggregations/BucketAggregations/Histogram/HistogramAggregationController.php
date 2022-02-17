@@ -36,7 +36,17 @@ class HistogramAggregationController extends AbstractController
                     'prices' => [
                         'histogram' => [
                             'field' => '_doc.price',
-                            'interval' => 50
+                            'interval' => 50,
+                            "keyed" => true,
+                            "min_doc_count" => 1,
+                            "offset" => 1,
+                            "missing" => 10,
+                            //"order" => [ "_count" => "desc" ],
+                            "order" => [ "_key" => "desc" ],
+                            //"extended_bounds" => [
+                            //    "min" => 0,
+                            //    "max" => 1200
+                            //]
                         ]
                     ]
                 ]
