@@ -38,17 +38,17 @@ class AdjacencyMatrixAggregationController extends AbstractController
                             'filters' => [
                                 'grpA' => [
                                     'terms' => [
-                                        '_doc.data.aboutMe' => 'ipsam'
+                                        '_doc.offer.color' => ['DarkSlateBlue']
                                     ]
                                 ],
                                 'grpB' => [
                                     'terms' => [
-                                        '_doc.data.aboutMe' => 'ipsam'
+                                        '_doc.offer.color' => ['PaleVioletRed']
                                     ]
                                 ],
                                 'grpC' => [
                                     'terms' => [
-                                        '_doc.data.aboutMe' => 'ipsam'
+                                        '_doc.offer.color' => ['SlateGray']
                                     ]
                                 ]
                             ]
