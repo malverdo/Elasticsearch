@@ -33,14 +33,14 @@ class HistogramAggregationController extends AbstractController
             'size' => 5,
             'body' => [
                 'aggs' => [
-                    'prices' => [
+                    'latency_buckets' => [
                         'histogram' => [
-                            'field' => '_doc.price',
-                            'interval' => 50,
+                            'field' => '_doc.number.value',
+                            'interval' => 5,
                             "keyed" => true,
                             "min_doc_count" => 1,
-                            "offset" => 1,
-                            "missing" => 10,
+//                            "offset" => 1,
+//                            "missing" => 10,
                             //"order" => [ "_count" => "desc" ],
                             "order" => [ "_key" => "desc" ],
                             //"extended_bounds" => [
