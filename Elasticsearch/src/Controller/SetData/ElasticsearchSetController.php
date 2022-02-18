@@ -57,6 +57,20 @@ class ElasticsearchSetController extends AbstractController
                             'city' => $this->faker->city,
                             'companyEmail' => $this->faker->companyEmail,
                             'company' => $this->faker->company,
+                            'number' => [
+                                'value' => [
+                                    mt_rand(0,10),
+                                    mt_rand(0,10),
+                                    mt_rand(0,10),
+                                    mt_rand(0,10)
+                                ],
+                                'ip' => [
+                                    mt_rand(0,10),
+                                    mt_rand(0,10),
+                                    mt_rand(0,10),
+                                    mt_rand(0,10)
+                                ],
+                            ],
                             'price' => [
                                 mt_rand(0,1000),
                                 mt_rand(0,1000),
