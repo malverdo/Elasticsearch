@@ -52,6 +52,13 @@ class ElasticSearchCreateIndexTypeController extends AbstractController
                                 'company' => ['type' => 'keyword'],
                                 'creditCardNumber' => ['type' => 'long'],
                                 'product' => ['type' => 'keyword'],
+                                'number' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                        'value' => ['type' => 'long'],
+                                        'ip' => ['type' => 'long'],
+                                    ]
+                                ],
                                 'price' => ['type' => 'long'],
                                     'offer' => [
                                         'type' => 'nested',
