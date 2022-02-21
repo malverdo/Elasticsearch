@@ -42,7 +42,6 @@ class DateRangeAggregationController extends AbstractController
                                 ['to'=> 1645164090],
                                 ['from'=> 1645164091]
                             ]
-
 //                           "_doc.dateTimeRegistrationCard.date" === "1992-01-18 23:54:29.000000"
 //                            'field' => '_doc.dateTimeRegistrationCard.date',
 //                            'format' => "yyyy-MM-dd HH:mm:ss.SSSSSS",
