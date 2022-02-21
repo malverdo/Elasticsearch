@@ -35,18 +35,21 @@ class DateRangeAggregationController extends AbstractController
                 'aggs' => [
                     'range' => [
                         'date_range' => [
-//                            'field' => '_doc.dateTimeThisMonth.date',
-//                            'format' => "epoch_second",
-//                            'ranges' => [
-//                                ['to'=> 1645164097],
-//                                ['from'=> 1645164098]
-//                            ]
-                            'field' => '_doc.dateTimeRegistrationCard.date',
-                            'format' => "yyyy-MM-dd HH:mm:ss.SSSSSS",
+//                             "_doc.dateTimeThisMonth.date" === 1645164098
+                            'field' => '_doc.dateTimeThisMonth.date',
+                            'format' => "epoch_millis",
                             'ranges' => [
-                                ['to'=> 'now-310M/M'],
-                                ['from'=> 'now-309M/M']
+                                ['to'=> 1645164090],
+                                ['from'=> 1645164091]
                             ]
+
+//                           "_doc.dateTimeRegistrationCard.date" === "1992-01-18 23:54:29.000000"
+//                            'field' => '_doc.dateTimeRegistrationCard.date',
+//                            'format' => "yyyy-MM-dd HH:mm:ss.SSSSSS",
+//                            'ranges' => [
+//                                ['to'=> 'now-310M/M'],
+//                                ['from'=> 'now-309M/M']
+//                            ]
                         ]
                     ]
                 ]
