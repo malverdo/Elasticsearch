@@ -33,9 +33,14 @@ class DateRangeAggregationController extends AbstractController
             'size' => 5,
             'body' => [
                 'aggs' => [
-                    'latency_buckets' => [
-                        'histogram' => [
-
+                    'range' => [
+                        'date_range' => [
+                            'field' => 'dateTimeThisMonth.date',
+                            'format' => "epoch_second",
+                            'ranges' => [
+                                ['to'=>'now-10M/M'],
+                                ['from'=>'now-10M/M']
+                            ]
                         ]
                     ]
                 ]
