@@ -35,7 +35,7 @@ class CompositeAggregationController extends AbstractController
                 'aggs' => [
                     'interactions' => [
                         'adjacency_matrix' => [
-
+                            // TODO Composite aggregation
                         ]
                     ]
                 ]
