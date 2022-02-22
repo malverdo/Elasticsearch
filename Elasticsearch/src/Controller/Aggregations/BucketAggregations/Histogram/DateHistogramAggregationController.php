@@ -33,9 +33,15 @@ class DateHistogramAggregationController extends AbstractController
             'size' => 5,
             'body' => [
                 'aggs' => [
-                    'latency_buckets' => [
-                        'histogram' => [
-
+                    'name_aggs_time' => [
+                        'date_histogram' => [
+                            "field"=> "_doc.dateTimeRegistrationCard.date",
+//                            "calendar_interval"=> "year",
+                            "fixed_interval" => "60d",
+                            "format" => "yyyy-MM-dd",
+                            "time_zone" => "-01:00",
+                            "min_doc_count" => 1,
+                            "order" => [ "_key" => "desc" ]
                         ]
                     ]
                 ]
